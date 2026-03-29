@@ -1,5 +1,45 @@
 #include <iostream>
+using namespace std;
 
-int main {
+class Bank{
+    private:
+        string Name;
+    public:
+        virtual void Interest(){
+            cout << "Interest is 0%" << endl;
+        }
+};
+
+class SavingsAccount : public Bank{
+    private:
+        int ID;
+    public:
+        void Interest() override{
+        cout << "Interest is 5%" << endl;   
+        }
+};
+
+class CurrentAccount : public Bank{
+    private:
+        int ID;
+    public:
+        void Interest() override{
+        cout << "Interest is 2%" << endl;   
+        }
+};
+
+
+int main() {
+
+    Bank *B1;
+    SavingsAccount S1;
+    CurrentAccount C1;
+
+    B1 = &S1;
+    B1->Interest();
+    B1 = &C1;
+    B1->Interest();
+
+
     return 0;
 }
